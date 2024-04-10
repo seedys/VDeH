@@ -1,0 +1,77 @@
+function [hdata] = vdp_binarycode (Sdata,data,m,t)
+% generate voronoi diagram projections space 
+% for a given distance matrix
+  
+[sn,~]=size(Sdata);   
+[n,~]=size(data);   
+IDX=[]; 
+
+parfor i = 1:t 
+% for i = 1:t 
+    subIndex = datasample(1:sn, m, 'Replace', false);
+    tdata=Sdata(subIndex,:);
+%     tdata = randn(m, size(data,2));
+%     Sim = zeros(size(tdata,1),size(data,1));
+%     for h1 = 1:size(tdata,1)
+%         for h2 = 1:size(data,1)
+%             Sim(h1,h2) = sum(tdata(h1,:).*data(h2,:)); 
+%         end
+%     end
+%     dis = 1 - Sim./(max(max(Sim)));
+    dis=pdist2(tdata,data);
+%     dis = distMat(tdata,data);
+%     dis = Jaccard_dis(tdata,data);
+    [~, centerIdx] = min(dis);
+    IDX=[IDX; centerIdx+(i-1)*m]; 
+end 
+ 
+IDR = repmat(1:n,t,1);
+V=IDR-IDR+1; 
+ndata = sparse(IDR(:)',IDX(:)',V(:)',n,t*m);
+hdata = full(ndata);
+
+end
+
+
+% function [hdata0] = vdp_binarycode (Sdata,data,m,t)
+% % generate voronoi diagram projections space 
+% % for a given distance matrix
+%   
+% [sn,~]=size(Sdata);   
+% [n,~]=size(data);   
+% IDX=[]; 
+% 
+% xt = 2*t;
+% 
+% parfor i = 1:xt 
+%     subIndex = datasample(1:sn, m, 'Replace', false);
+%     tdata=Sdata(subIndex,:);    
+%     dis=pdist2(tdata,data);    
+%     [~, centerIdx] = min(dis);
+%     IDX=[IDX; centerIdx+(i-1)*m]; 
+% end 
+%  
+% IDR = repmat(1:n,xt,1);
+% V=IDR-IDR+1; 
+% ndata = sparse(IDR(:)',IDX(:)',V(:)',n,xt*m);
+% hdata0 = full(ndata);
+% 
+% fx = zeros(1,xt);
+% 
+% parfor i = 1:xt
+%     sub = hdata0(:,(i-1)*m+1:i*m);
+%     fx(i) = std(mean(sub));
+% end
+% 
+% [~,s2] = sort(fx,'ascend');
+% 
+% hdata = [];
+% 
+% for i = 1:t
+%     hdata = [hdata, hdata0(:,(s2(i)-1)*m+1:s2(i)*m)];
+% end
+
+
+
+
+% end
