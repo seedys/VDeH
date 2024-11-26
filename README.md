@@ -1,6 +1,6 @@
 # VDeH
 
-## Codes for SIGMOD'25: Voronoi Diagram Encoded Hashing: A No-Learning Data-Dependent Approach for Large-Scale Information Retrieval
+## Codes for ICDE'25: Voronoi Diagram Encoded Hashing
 
 ## File Structure
 demo.m: the main execution file of the project.
