@@ -1,4 +1,4 @@
-%% Demo for ICDE'25
+%% Demo for ECMLPKDD'25
 %% Voronoi Diagram Encoded Hashing
 
 close all; clear; clc;
