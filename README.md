@@ -8,8 +8,8 @@ demo.m: the main execution file of the project.
 ./Method-VDeH: our proposed method
 ./Method-LSH: no-learning LSH for simple comparison
 ./Method-BPH: BPH method
-./Method-BPH: CBE method
-./Method-BPH: SH method
+./Method-CBE: CBE method
+./Method-SH: SH method
 ...
 ./DB-FeaturesToBeProcessing: original dataset
 ./DB-FeaturesAfterProcessing: dataset for train and test partitioning
