@@ -1,6 +1,6 @@
 # VDeH
 
-## Codes for ICDE'25: Voronoi Diagram Encoded Hashing
+## Codes for ECMLPKDD'25: Voronoi Diagram Encoded Hashing
 
 ## File Structure
 demo.m: the main execution file of the project.
